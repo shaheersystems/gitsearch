@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&family=Montserrat&display=swap");
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+.search-bar {
+  background: #ffffff;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  flex: 0.5;
+}
+.logo-text {
+  font-family: "Fira Code", calibri;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+}
+form {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 20px;
+}
+form input {
+  padding: 8px 25px;
+  width: 70%;
+  background: #ffffff;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 5px;
+  outline: none;
+  color: rgb(0, 0, 0);
+  font-family: "Fira Code", calibri;
+}
+form input:focus {
+  outline: 2px solid rgb(75, 157, 238);
+}
+form button {
+  padding: 8px 25px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid dodgerblue;
+  color: white;
+  background: dodgerblue;
+
+  cursor: pointer;
+}
+::placeholder {
+  font-family: "Fira Code", calibri;
+}
+.container {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.profile {
+  border-radius: 5px;
+  min-height: 35vh;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 350px;
+  padding: 25px;
+  background: #ffffff;
+  gap: 15px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Fira Code", calibri;
+  align-items: center;
+}
+.desc {
+  font-family: "Montserrat", calibri;
+  font-size: 18px;
+}
+.main img {
+  border-radius: 100%;
+  height: 100px;
+}
+.profile .btn a {
+  border-radius: 5px;
+  padding: 7px 25px;
+  color: white;
+  font-family: "Montserrat", calibri;
+  text-decoration: none;
+  background: dodgerblue;
+}
+.repo-card {
+  min-height: 30vh;
+  gap: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 250px;
+}
+.repo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.repo h2 {
+  font-family: "Fira Code", calibri;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Montserrat", calibri;
+}
+.links a {
+  padding: 5px 4px;
+  color: white;
+  background: dodgerblue;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.repos-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vh;
+  max-width: 80%;
+  margin: auto;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}
