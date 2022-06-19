@@ -142,7 +142,7 @@ form button {
   flex-direction: column;
   gap: 10px;
 }
-.repo h2 {
+.repo h3 {
   font-family: "Fira Code", calibri;
 }
 .links {

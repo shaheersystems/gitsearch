@@ -4,66 +4,56 @@ import Container from "./components/Container";
 import Profile from "./components/Profile";
 import RepoCard from "./components/RepoCard";
 import ReposContainer from "./components/ReopsContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function App() {
-  const githubUsers = [
-    {
-      firstName: "Muhammad",
-      lastName: "Shaheer",
-      link: "https://google.com",
-      bio: "I drink coffee, mash my keyboard and sometimes some useable code comes out.",
-      repos: [
-        {
-          repoName: "process",
-          repoDesc: "My personal website. Used for experiments and learnings",
-          repoLink: "https://github-search-youtube-demo.netlify.app/",
-          numWatchers: 5,
-        },
-        {
-          repoName: "process",
-          repoDesc: "My personal website. Used for experiments and learnings",
-          repoLink: "https://github-search-youtube-demo.netlify.app/",
-          numWatchers: 5,
-        },
-        {
-          repoName: "process",
-          repoDesc: "My personal website. Used for experiments and learnings",
-          repoLink: "https://github-search-youtube-demo.netlify.app/",
-          numWatchers: 5,
-        },
-        {
-          repoName: "process",
-          repoDesc: "My personal website. Used for experiments and learnings",
-          repoLink: "https://github-search-youtube-demo.netlify.app/",
-          numWatchers: 5,
-        },
-      ],
-    },
-  ];
-  const [user, setUser] = useState(githubUsers[0]);
-  const [repos, setRepos] = useState(githubUsers[0].repos);
+  const [username, setUsername] = useState("shaheersystems");
+  const [user, setUser] = useState({});
+  const [repos, setRepos] = useState([]);
+  useEffect(() => {
+    const url1 = `https://api.github.com/users/${username}`;
+    const url2 = `https://api.github.com/users/${username}/repos`;
+    fetch(url1)
+      .then((res) => res.json())
+      .then((data) => setUser(data));
+    fetch(url2)
+      .then((res) => res.json())
+      .then((data) => setRepos(data));
+  }, [username]);
+  const handleSearchItem = (event) => {
+    setUsername(event.target.value);
+  };
+  const renderData = () => {
+    if (repos.message === "Not Found" || !user) {
+      return <p>Sorry there was an error</p>;
+    } else {
+      return (
+        <Container>
+          <Profile avatar={user.avatar_url} name={user.login} desc={user.bio} />
+          <ReposContainer>
+            {repos.map((item) => {
+              return (
+                <RepoCard
+                  repoName={item.name}
+                  repoDesc={
+                    item.description === ""
+                      ? "No discription"
+                      : item.description
+                  }
+                  repoLink={item.html_url}
+                  repoWatchers={item.watchers === 0 ? "No" : item.watchers}
+                />
+              );
+            })}
+          </ReposContainer>
+        </Container>
+      );
+    }
+  };
+
   return (
     <div className="App">
-      <SearchBar />
-      <Container>
-        <Profile
-          name={user.firstName + " " + user.lastName}
-          desc={user.bio}
-          link={user.link}
-        />
-        <ReposContainer>
-          {repos.map((item) => {
-            return (
-              <RepoCard
-                repoName={item.repoName}
-                repoDesc={item.repoDesc}
-                repoLink={item.repoLink}
-                repoWatchers={item.numWatchers}
-              />
-            );
-          })}
-        </ReposContainer>
-      </Container>
+      <SearchBar handleSearchItem={handleSearchItem} />
+      {renderData()}
     </div>
   );
 }

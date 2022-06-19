@@ -4,7 +4,7 @@ function RepoCard(props) {
   return (
     <div className="repo-card">
       <div className="repo">
-        <h2>{props.repoName}</h2>
+        <h3>{props.repoName}</h3>
         <div className="desc">{props.repoDesc}</div>
       </div>
       <div className="links">
